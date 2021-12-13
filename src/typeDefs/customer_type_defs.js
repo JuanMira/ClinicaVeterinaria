@@ -1,7 +1,6 @@
 const { gql } = require("apollo-server");
-
-const accountTypeDefs = gql`
-  type Account {
+const customerTypeDefs = gql`
+  type Customer {
     idUsuario: String!
     firstName: String!
     lastName: String!
@@ -11,7 +10,7 @@ const accountTypeDefs = gql`
     direccion: String!
     lastChange: String!
   }
-  input CreateCustomerInput {
+  input CustomerInput {
     idUsuario: String!
     firstName: String!
     lastName: String!
@@ -21,14 +20,11 @@ const accountTypeDefs = gql`
     direccion: String!
     lastChange: String!
   }
-
-  type Mutation {
-    CreateCustomer(userInput: CreateCustomerInput): Account!
+  extend type Mutation {
+    createCustomer(Customer: CustomerInput!): Customer!
   }
-
   extend type Query {
-    accountById(idUsuario: String!): Account
+    customerByidUsuario(idUsuario: String!): Customer!
   }
 `;
-
-module.exports = accountTypeDefs;
+module.exports = customerTypeDefs;
