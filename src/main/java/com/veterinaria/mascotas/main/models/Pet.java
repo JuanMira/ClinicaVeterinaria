@@ -7,7 +7,7 @@ public class Pet {
     private String idMascota;
     private String nombreMascota;
     private String raza;
-    private String idDueño;
+    private String idCustomer;
 
     public Pet(String nombreMascota, String raza) {
         this.nombreMascota = nombreMascota;
@@ -35,11 +35,11 @@ public class Pet {
     }
 
     public String getIdDueño() {
-        return idDueño;
+        return idCustomer;
     }
 
     public void setIdDueño(String idDueño) {
-        this.idDueño = idDueño;
+        this.idCustomer = idDueño;
     }
 
 }
