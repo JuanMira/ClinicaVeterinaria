@@ -34,11 +34,11 @@ public class Pet {
         this.raza = raza;
     }
 
-    public String getIdDueño() {
+    public String getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdDueño(String idDueño) {
+    public void setIdCustomer(String idDueño) {
         this.idCustomer = idDueño;
     }
 

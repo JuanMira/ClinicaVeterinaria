@@ -61,8 +61,8 @@ public class PetController {
             petFounded.setRaza(pet.getRaza());
         }
 
-        if (!pet.getIdDueño().equals("")) {
-            petFounded.setIdDueño(pet.getIdDueño());
+        if (!pet.getIdCustomer().equals("")) {
+            petFounded.setIdCustomer(pet.getIdCustomer());
         }
 
         petRepository.save(petFounded);
