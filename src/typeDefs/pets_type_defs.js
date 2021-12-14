@@ -4,18 +4,20 @@ const petsTypeDefs = gql`
     idMascota: String
     nombreMascota: String
     raza: String
-    idDueno: String
+    idCustomer: String
   }
   input signUpPets {
     idMascota: String
     nombreMascota: String
     raza: String
-    idDueno: String
+    idCustomer: String
   }
 
   type Mutation {
     createPets(Customer: signUpPets!): Pets
     deletePets(idMascota: String!): Boolean
+    adoptPet(idMascota: String!, idCustomer: String!): Boolean
+    updatePet(idPet: String!, Customer: signUpPets!): Boolean
   }
   extend type Query {
     petsByidMascota(idMascota: String!): Pets

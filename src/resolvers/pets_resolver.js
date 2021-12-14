@@ -6,14 +6,27 @@ const petsResolver = {
     },
   },
   Mutation: {
-    createPets: async (_, { Pets }, { dataSources }) => {
+    createPets: async (_, { Customer }, { dataSources }) => {
       const petsInput = {
-        idMascota: Pets.idMascota,
-        nombreMascota: Pets.nombreMascota,
-        raza: Pets.raza,
-        idDueno: Pets.idDueno,
+        nombreMascota: Customer.nombreMascota,
+        raza: Customer.raza,
       };
       await dataSources.petsAPI.createPets(petsInput);
+    },
+    adoptPet: async (_, { idMascota, idCustomer }, { dataSources }) => {
+      const adoptPet = {
+        nombreMascota: "",
+        raza: "",
+        idCustomer: idCustomer,
+      };
+      await dataSources.petsAPI.adoptPet(idMascota, adoptPet);
+    },
+    updatePet: async (_, { idPet, Customer }, { dataSources }) => {
+      const adoptPet = {
+        nombreMascota: Customer.nombreMascota,
+        raza: Customer.raza,
+      };
+      await dataSources.petsAPI.updatePet(idPet, adoptPet);
     },
   },
 };

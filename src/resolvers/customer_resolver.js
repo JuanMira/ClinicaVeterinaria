@@ -3,6 +3,7 @@ const customerResolver = {
     listCustomer: (_, __, { dataSources }) =>
       dataSources.customerAPI.listCustomer(),
     customerByidUsuario: async (_, { idUsuario }, { dataSources }) => {
+      console.log(idUsuario);
       return await dataSources.customerAPI.customerByidUsuario(idUsuario);
     },
   },
