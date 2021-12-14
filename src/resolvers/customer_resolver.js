@@ -1,26 +1,21 @@
 const customerResolver = {
   Query: {
-    customerByidUsuario: async (
-      _,
-      { idUsuario },
-      { dataSources, userIdToken }
-    ) => {
-      usernameToken = (await dataSources.authAPI.getUser(userIdToken)).username;
-      if (idUsuario == usernameToken)
-        return await dataSources.customerAPI.customerByidUsuario(idUsuario);
-      else return null;
+    listCustomer: (_, __, { dataSources }) =>
+      dataSources.customerAPI.listCustomer(),
+    customerByidUsuario: async (_, { idUsuario }, { dataSources }) => {
+      return await dataSources.customerAPI.customerByidUsuario(idUsuario);
     },
   },
   Mutation: {
-    signUpUser: async (_, { userInput }, { dataSources }) => {
+    createCusto: async (_, { Customer }, { dataSources }) => {
       const customerInput = {
-        idUsuario: userInput.idUsuario,
-        firstname: userInput.firstname,
-        lastname: userInput.lastname,
-        correo: userInput.correo,
-        telefono: userInput.telefono,
-        tipoDocumento: userInput.tipoDocumento,
-        direccion: userInput.direccion,
+        idUsuario: Customer.idUsuario,
+        firstName: Customer.firstName,
+        lastName: Customer.lastName,
+        correo: Customer.correo,
+        telefono: Customer.telefono,
+        tipoDocumento: Customer.tipoDocumento,
+        direccion: Customer.direccion,
         lastChange: new Date().toISOString(),
       };
       await dataSources.customerAPI.createCustomer(customerInput);

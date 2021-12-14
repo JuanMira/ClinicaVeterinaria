@@ -7,10 +7,13 @@ class CustomerAPI extends RESTDataSource {
   }
   async createCustomer(account) {
     account = new Object(JSON.parse(JSON.stringify(account)));
-    return await this.post("/account", account);
+    return await this.post("account", account);
   }
-  async customerByUsername(idUsuario) {
-    return await this.get(`/account${idUsuario}/`);
+  async customerByidUsuario(idUsuario) {
+    return await this.get(`account/${idUsuario}`);
+  }
+  async listCustomer() {
+    return await this.get(`account`);
   }
 }
 module.exports = CustomerAPI;
